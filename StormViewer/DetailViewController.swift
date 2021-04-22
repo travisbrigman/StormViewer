@@ -18,6 +18,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
         
+        //the title property is "baked in" to this class
         title = "picture \(selectedPictureNumber) of \(totalPictures)"
         
         if let imageToLoad = selectedImage {
@@ -27,6 +28,7 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //These parts of the lifecycle were added so that only when viewing the photo the bar on top is removed.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.hidesBarsOnTap = true
