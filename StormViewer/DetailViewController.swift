@@ -21,6 +21,8 @@ class DetailViewController: UIViewController {
         //the title property is "baked in" to this class
         title = "picture \(selectedPictureNumber) of \(totalPictures)"
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
+        
         if let imageToLoad = selectedImage {
             imageView.image  = UIImage(named: imageToLoad)
         }
@@ -39,6 +41,13 @@ class DetailViewController: UIViewController {
         navigationController?.hidesBarsOnTap = false
     }
     
+    @objc func shareTapped() {
+        let text = "StormViewer is a great app!"
+
+        let vc = UIActivityViewController(activityItems: [text], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
+    }
 
     /*
     // MARK: - Navigation
